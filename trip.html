@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <style>
+        body {
+            font-family: Helvetica;
+            margin: 0;
+            padding: 0;
+            background-image: url('photos/batik.jpeg');
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            margin-top: 20px;
+            text-align: center;
+            color: #3b2f2f; /* Dark chocolate color */
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .description {
+            margin: 10px 0;
+            text-align: center;
+            color: #333; /* Dark text color */
+            background: rgba(245, 245, 220, 0.9); /* Beige background with slight transparency */
+            padding: 10px;
+            border-radius: 10px; /* Rounded corners */
+            max-width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better effect */
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            height: 450px; /* Adjust height to maintain filmstrip-like size */
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.8); /* Optional background for better visibility */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional shadow for better effect */
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-image {
+            min-width: 100%;
+            height: 100%; /* Ensure images fill the container */
+            transition: transform 0.3s;
+        }
+
+        .carousel-image:first-child:active {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hide the iframe containing the background music */
+        .background-music {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden iframe for background music -->
+    <iframe class="background-music" width="560" height="315" src="https://www.youtube.com/embed/X1Za4CZVDQg?autoplay=1&loop=1&playlist=X1Za4CZVDQg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+    <div class="header">
+        <h1>We're in Perlis</h1>
+    </div>
+    <div class="description">
+        <p>Welcome to our beautiful gallery of Perlis. Explore the scenic views and cultural richness through these images.</p>
+    </div>
+    <div class="carousel-container">
+        <div class="carousel">
+            <!-- Replace src with your image paths -->
+            <img src="perlis/perlis1.jpg" class="carousel-image" alt="Image 1">
+            <img src="perlis/perlis2.jpg" class="carousel-image" alt="Image 2">
+            <img src="perlis/perlis5jpg.jpg" class="carousel-image" alt="Image 3">
+            <img src="perlis/perlis6.jpg" class="carousel-image" alt="Image 4">
+            <img src="perlis/perlis3.jpg" class="carousel-image" alt="Image 5">
+            <img src="perlis/perlis7.jpg" class="carousel-image" alt="Image 6">
+            <img src="perlis/perlis.jpg" class="carousel-image" alt="Image 7">
+            <img src="perlis/perlis8.jpg" class="carousel-image" alt="Image 8">
+            <img src="perlis/perlis9.jpg" class="carousel-image" alt="Image 9">
+            <img src="perlis/perlis11.jpg" class="carousel-image" alt="Image 10">
+            <img src="perlis/perlis12.jpg" class="carousel-image" alt="Image 11">
+            <img src="perlis/perlisi.jpg" class="carousel-image" alt="Image 12">
+            <img src="perlis/perlis13.jpg" class="carousel-image" alt="Image 13">
+            <img src="perlis/perlis16.jpg" class="carousel-image" alt="Image 15">
+            <img src="perlis/perlisii.jpg" class="carousel-image" alt="Image 17">
+            <img src="perlis/perlisiii.jpg" class="carousel-image" alt="Image 18">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.carousel');
+            const images = document.querySelectorAll('.carousel-image');
+            let currentIndex = 0;
+            const imageCount = images.length;
+            const intervalTime = 4000; // 4 seconds
+
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % imageCount;
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            setInterval(showNextImage, intervalTime);
+        });
+    </script>
+</body>
+</html>

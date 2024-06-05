@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Family</title>
+    <style>
+        body {
+            font-family: Helvetica;
+            margin: 0;
+            padding: 0;
+            background-image: url(photos/batik.jpeg);
+            color: #333;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .image-container img {
+            width: 650px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .image-container img:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .custom-container {
+            position: relative;
+            width: 30%;
+            margin: 15px auto;
+            border: 2px solid rgb(216, 91, 112);
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .custom-image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 20px;
+            pointer-events: none;
+        }
+
+        .custom-container:hover .custom-overlay {
+            opacity: 1;
+        }
+
+        .slideshow img {
+            display: none;
+            width: 100%;
+        }
+
+        .slideshow img.active {
+            display: block;
+        }
+
+        .description {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            display: none;
+        }
+
+        .slideshow img:hover + .description {
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Let's know my lovely family members</h1>
+    <div class="image-container">
+        <img src="photos/family.jpg" alt="Family Photo" width="50%" height="30%" border="3">
+    </div>
+    <br><br>
+    <pre><h3>Abah, named Mohd Arshad, used to work as a factory worker before becoming a chef.
+        He started working as a chef at a hotel called Suria and later transferred to
+        Hotel Bukit Merah Laketown Resort, which is the main hotel of the resort.
+        He hasn't been working since 2021 due to his age, but he still cooks at home.
+        </h3></pre>
+        <br>
+        <pre><h3>Nor Laila is my mum's name. She owns a famous spa in my hometown, Bagan Serai.
+        She is a lovely and disciplined person when it comes to work. Mama loves gardening
+        and makes sure the house is clean. She is my queen.
+        </h3></pre>
+        
+        <br>
+        <pre><h3>My elder sister's name is Intan Suliana. She is now married and lives with her husband 
+        in Putrajaya. She works as a teacher at a secondary school in her area. Among us, she is the best one in cooking.
+        She said that grandma let her play cooking while kids with the real ingredients.
+        </h3></pre>      
+        
+        <br>
+        <pre><h3>The second sister, known as Faten Shahirah, is also happily married and has a genius 9-month-old 
+        daughter named Aryan Syahmi. She is now working with my mum. Apart from that, my second sister 
+        always buys us anything. She is kind.
+        </h3></pre>
+        
+        <br>
+        <pre><h3>The middle sister is my enemy. His name is Nur Shuhada. We always fight because
+        she is a stubborn child. From a positive view, I can say that she would take me and my youngest
+        sister to the cinema or food hunting.
+        </h3></pre>    
+        
+        <br>
+        <pre><h3>Finally, my youngest sister, Nur Syafinaz, is 15 years old. 
+    She's my best friend and everything to me. We always have each other.
+        </h3></pre>  
+        
+
+    <br><br>
+    <center><h1>Recently Update</h1>
+    <br><br>
+
+    <div class="custom-container" ondblclick="startSlideshow(this)">
+        <div class="slideshow">
+            <img src="photos/lumut1.jpg" alt="Slideshow Image 1" class="custom-image active">
+            <div class="description">Lumut, Perak</div>
+            <img src="photos/lumut2.jpg" alt="Slideshow Image 2" class="custom-image">
+            <div class="description"></div>
+            <img src="photos/lumut3.jpg" alt="Slideshow Image 3" class="custom-image">
+            <div class="description"></div>
+            <img src="photos/lumut4.jpg" alt="Slideshow Image 4" class="custom-image">
+            <div class="description"></div>
+            <img src="photos/lumut5.jpg" alt="Slideshow Image 5" class="custom-image">
+            <div class="description"></div>
+            <img src="photos/lumut6.jpg" alt="Slideshow Image 6" class="custom-image">
+            <div class="description"></div>
+            <img src="photos/lumut7.jpg" alt="Slideshow Image 7" class="custom-image">
+            <div class="description"></div>
+        </div>
+        <div class="custom-overlay">Double-Click</div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        let interval;
+
+        function startSlideshow(element) {
+            const slides = element.querySelectorAll('.slideshow .custom-image');
+            const descriptions = element.querySelectorAll('.slideshow .description');
+            slides[currentSlide].classList.remove('active');
+            descriptions[currentSlide].style.display = 'none';
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            descriptions[currentSlide].style.display = 'block';
+            clearInterval(interval);
+            interval = setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                descriptions[currentSlide].style.display = 'none';
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+                descriptions[currentSlide].style.display = 'block';
+            }, 2000);
+        }
+
+        document.addEventListener('dblclick', function (e) {
+            if (!e.target.closest('.custom-container')) {
+                clearInterval(interval);
+                const slideshows = document.querySelectorAll('.slideshow .custom-image');
+                const descriptions = document.querySelectorAll('.slideshow .description');
+                slideshows.forEach(slide => slide.classList.remove('active'));
+                descriptions.forEach(desc => desc.style.display = 'none');
+                currentSlide = 0;
+                slideshows[currentSlide].classList.add('active');
+                descriptions[currentSlide].style.display = 'block';
+            }
+        });
+    </script>
+<br><br>
+    <pre><h3>This trip was supposed to be for us siblings, but one of us can't join.
+    </h3></pre>
+</body>
+</html>

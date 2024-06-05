@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <h1>Movie Rocommendation</h1>
+    <style>
+        /* Body style */
+        body {
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            background: url("movieimages/header.jpg") no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Style for movie posters container */
+        .movie-posters-container {
+            overflow-x: scroll;
+            white-space: nowrap;
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        /* Style for movie posters */
+        .movie-posters {
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0; /* Remove margin */
+        }
+        .movie-poster {
+            width: 250px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 10px; /* Adjust spacing between posters */
+            transition: transform 0.3s ease;
+        }
+        .movie-poster:hover {
+            transform: scale(1.1);
+        }
+        /* Style for scroll buttons */
+        .scroll-button {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .scroll-button-left {
+            left: 0;
+        }
+        .scroll-button-right {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Scroll Button -->
+    <div class="scroll-button scroll-button-left" onclick="scrollPosters('left')">←</div>
+
+    <!-- Movie Posters Container -->
+    <div class="movie-posters-container" id="moviePostersContainer">
+        <!-- Movie Posters -->
+        <div class="movie-posters">
+            <img class="movie-poster" src="movieimages/apes1.jpg" alt="Poster 1" onclick="showText('Text for Poster 1')">
+            <img class="movie-poster" src="movieimages/apes2.jpg" alt="Poster 2" onclick="showText('Text for Poster 2')">
+            <img class="movie-poster" src="movieimages/apes3.jpg" alt="Poster 3" onclick="showText('Text for Poster 3')">
+            <img class="movie-poster" src="movieimages/apes4.jpg" alt="Poster 4" onclick="showText('Text for Poster 4')">
+            <!-- Duplicate posters -->
+            <img class="movie-poster" src="movieimages/sheriff1.jpeg" alt="Poster 1" onclick="showText('Text for Poster 1')">
+            <img class="movie-poster" src="movieimages/The_Experts_poster.jpeg" alt="Poster 2" onclick="showText('Text for Poster 2')">
+            <img class="movie-poster" src="movieimages/she.jpeg" alt="Poster 3" onclick="showText('Text for Poster 3')">
+            <img class="movie-poster" src="movieimages/doh.jpeg" alt="Poster 4" onclick="showText('Text for Poster 4')">
+        </div>
+    </div>
+
+    <!-- Right Scroll Button -->
+    <div class="scroll-button scroll-button-right" onclick="scrollPosters('right')">→</div>
+
+    <!-- Script to display text on click and handle scrolling -->
+    <script>
+        function showText(text) {
+            alert(text);
+        }
+
+        function scrollPosters(direction) {
+            const container = document.getElementById('moviePostersContainer');
+            if (direction === 'left') {
+                container.scrollLeft -= 300; // Adjust scroll distance
+            } else {
+                container.scrollLeft += 300; // Adjust scroll distance
+            }
+        }
+    </script>
+</body>
+</html>
